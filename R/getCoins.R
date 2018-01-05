@@ -31,11 +31,11 @@
 #' }
 #' @export
 getCoins <-
-  function() {
+  function(n=100) {
     cat("Retrieves coin market history from coinmarketcap. ")
     i <- "i"
     options(scipen = 999)
-    coins <- listCoins()
+    coins <- listCoins(n)
     coinnames <-
       dplyr::data_frame(
         name = as.character(coins$name),
