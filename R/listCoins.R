@@ -18,7 +18,7 @@
 #' \dontrun{
 #' coin_list <- listCoins()
 #' }
-listCoins <- function() {
+listCoins <- function(n=100) {
   today <- gsub("-", "", lubridate::today())
   json <-
     "https://files.coinmarketcap.com/generated/search/quick_search.json"
@@ -30,6 +30,7 @@ listCoins <- function() {
       slug = coins$slug,
       rank = coins$rank
     )
+  coins=coins[1:n,]
   length <- as.numeric(length(coins$slug))
   cmcurl <-
     paste0(
