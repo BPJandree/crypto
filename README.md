@@ -23,20 +23,15 @@ For now installation is through devtools::install_github("jessevent/crypto") unt
 #### Installing crypto via Github
 
 ```
+# for the original code 
 library(devtools)
 install_github("jessevent/crypto")
+# the original code may point to the old json location in whcich coinmarketcap data was stored. If you run into errors you can try my updated package.
+
+# for my adapted code:
+library(devtools)
+install_github("BPJandree/crypto")
 ```
-
-#### Installing crypto via CRAN
-
-- Waiting for approval to be added as CRAN package
-
-  ```
-  install.packages("crypto")
-  ```
-
-  ## Package Usage
-
 ### Load Crypto Package
 
 ```
@@ -49,6 +44,24 @@ This is the main function of this package and once ran will go and scrape all th
 
 ```
 will_i_get_rich <- getCoins()
+```
+
+My code change also allows the following:
+
+```
+
+### GET DATA
+# top 100
+n = 100
+tickers <- listCoins(n)
+# check the symbols
+symbols <- tickers[,"symbol"]
+3 check the coins
+curnames <- tickers[,"name"]
+
+# grab the data
+df <- getCoins(n)
+
 ```
 
 ### Output
@@ -72,15 +85,8 @@ I've had to go over the code with a fine tooth comb to get it compatible with CR
     $ close_ratio <dbl> 0.5438, 0.7813, 0.3843, 0.2882, 0.3881, 0...
     $ spread      <dbl> 3.88, 13.49, 12.88, 32.17, 33.32, 29.03, 2...
 ```
-
-## Built With :heart: R
-
-- [Kaggle](https://www.kaggle.com/jessevent/all-crypto-currencies) - Get this dataset on kaggle!
-- [CoinSpot](https://coinspot.com.au?affiliate=9V5G4) - Invest $AUD into Crypto today!
-- [CoinMarketCap](https://coinmarketcap.com/) - Providing amazing data @CoinMarketCap
-
 ### Authors
-
+Original code from
 - **Jesse Vent** - Package Author - [jessevent](https://github.com/jessevent)
 
 ### License
@@ -93,10 +99,3 @@ This project is licensed under the MIT License - see the
 
 - Thanks to the team at <https://coinmarketcap.com> for the great work they do and to the team at CoinTelegraph where the images were sourced.
 - Please star this if you find it useful, and remember the crypto currency market is volatile by nature, please be responsible if trading.
-- If by chance you do manage to make your fortune through some game-changing model, I'd appreciate your consideration in the below :)
-
-  ```
-  ERC-20: 0x375923Bf82F0b728d23A5704261a6e16341fd860
-  XRP: rK59semLsuJZEWftxBFhWuNE6uhznjz2bK
-  LTC: LWpiZMd2cEyqCdrZrs9TjsouTLWbFFxwCj
-  ```
